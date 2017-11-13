@@ -1,0 +1,65 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Popover</title>
+        <link rel="stylesheet" href="popover.css">
+        <style>
+            .hidden {
+                display: none!important;
+            }
+            #demo-container{
+                margin-top: 200px;
+                margin-left: 200px;
+            }
+            #demo-popover{
+                border:1px solid red;
+                background: green;
+                box-shadow: 0 0 4px 4px rgba(0,0,0,.4);
+                /* 位置为左右(.popover-left-wrap,.popover-right-wrap)的弹出层时必须要为.popover元素设置宽度*/
+                width: 200px;
+                /* 位置为上下(.popover-top-wrap,.popover-bottom-wrap)的弹出层时必须要为.popover元素设置高度*/
+                height: 100px;
+            } 
+        </style>
+    </head>
+    <body>
+        <div id="demo-container" class="popover-container">
+            <div id="demo-test-btn">
+                点击我的时候"消息提示框"的显示与否会发生切换<br/>
+            </div>
+            <div id="demo-popover-wrap" class="popover-wrap popover-left-wrap">
+                    <div id="demo-popover" class="popover">
+                        <div class="popover-content">
+                            这是一个弹出提示层<br/>
+                            这是一个弹出提示层<br/>
+                            这是一个弹出提示层<br/>
+                            这是一个弹出提示层
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <hr/>
+        <label for="#changePopover">切换弹出提示层的方向:</label>
+        <select id="changePopover">
+            <option value="popover-left-wrap">左侧弹出层</option>
+            <option value="popover-top-wrap">上侧弹出层</option>
+            <option value="popover-right-wrap">右侧弹出层</option>
+            <option value="popover-bottom-wrap">下侧弹出层</option>
+        </select>
+        <script>
+            var wrap=document.querySelector("#demo-popover-wrap");
+            var classList = wrap.classList;
+            document.querySelector("#changePopover")
+            .addEventListener("change",function(){
+                classList.remove("popover-left-wrap","popover-top-wrap","popover-right-wrap","popover-bottom-wrap");
+                classList.add(this.value);
+            });
+            var testBtn=document.querySelector("#demo-test-btn");
+            testBtn.addEventListener("click",function(){
+                classList.toggle("hidden");
+            })
+        </script>
+    </body>
+    </html>

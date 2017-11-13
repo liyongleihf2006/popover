@@ -1,0 +1,144 @@
+/* 定义提示弹出框上面用来生成小三角的元素的大小*/
+.popover::before{
+    height: 10px;
+    width: 10px;
+}
+/* 让弹出提示层向左侧偏移小三角大小的2倍*/
+.popover-left-wrap .popover{
+    margin-right: 14.14px!important;
+}
+.popover-left-wrap .popover::before{
+    /* 偏移一下小三角,偏移公式为:-Math.sqrt(width^2+heigth^2)/2 */
+    margin-right: -7.07px!important;/* 使用important的原因是防止下面的auto覆盖 */
+}
+/* 让弹出提示层向右侧偏移小三角大小的2倍*/
+.popover-right-wrap .popover{
+    margin-left: 14.14px!important;
+}
+.popover-right-wrap .popover::before{
+    /* 偏移一下小三角,偏移公式为:-Math.sqrt(width^2+heigth^2)/2 */
+    margin-left: -7.07px!important;/* 使用important的原因是防止下面的auto覆盖 */
+}
+/* 让弹出提示层向上侧偏移小三角大小的2倍*/
+.popover-top-wrap .popover{
+    margin-bottom: 14.14px!important;;
+}
+.popover-top-wrap .popover::before{
+    /* 偏移一下小三角,偏移公式为:-Math.sqrt(width^2+heigth^2)/2 */
+    margin-bottom: -7.07px!important;/* 使用important的原因是防止下面的auto覆盖 */
+}
+/* 让弹出提示层向下侧偏移小三角大小的2倍*/
+.popover-bottom-wrap .popover{
+    margin-top: 14.14px!important;;
+}
+.popover-bottom-wrap .popover::before{
+    /* 偏移一下小三角,偏移公式为:-Math.sqrt(width^2+heigth^2)/2 */
+    margin-top: -7.07px!important;/* 使用important的原因是防止下面的auto覆盖 */
+}
+
+
+
+.popover-container{
+    position: relative;
+    display: inline-block;
+}
+.popover{
+    position: absolute;
+    background: white;
+    margin: auto;
+}
+.popover::before{
+    content: "";
+    /* 绝对定位元素并使得元素位置可以通过具体的方位来剧中 */
+    position: absolute;
+    margin: auto;
+    /* 继承popover背景色,不支持渐变色 */
+    background: inherit;
+    /* 继承popover的border样式 */
+    border:inherit;
+    /* 旋转-45度角 */
+    transform: rotate(-45deg);
+    /* 继承popover的阴影效果 */
+    box-shadow: inherit;
+    /* 继承popover的outline */
+    outline: inherit;
+}
+.popover-wrap{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.popover-left-wrap{
+    right: auto;
+    width: 0;
+}
+.popover-right-wrap{
+    left: auto;
+    width: 0;
+}
+.popover-top-wrap{
+    bottom:auto;
+    height: 0;
+}
+.popover-bottom-wrap{
+    top:auto;
+    height: 0;
+}
+/* 设置一个-2000px这样极大的一个数是为了防止父容器太小的时候元素定位不准 */
+.popover-left-wrap .popover,.popover-right-wrap .popover{
+    top: -2000px;
+    bottom: -2000px;
+}
+.popover-left-wrap .popover{
+    right: 0;
+}
+.popover-left-wrap .popover::before{
+    /* 最右侧 */
+    right: 0;
+}
+.popover-right-wrap .popover{
+    left: 0;
+}
+.popover-right-wrap .popover::before{
+    /* 最左侧 */
+    left: 0;
+}
+.popover-left-wrap .popover::before,.popover-right-wrap .popover::before{
+    /* 上下剧中 */
+    top:0;
+    bottom: 0;
+}
+/* 设置一个-2000px这样极大的一个数是为了防止父容器太小的时候元素定位不准 */
+.popover-top-wrap .popover,.popover-bottom-wrap .popover{
+    left: -2000px;
+    right: -2000px;
+}
+.popover-top-wrap .popover{
+    bottom: 0;
+}
+.popover-top-wrap .popover::before{
+    /* 最下侧 */
+    bottom: 0;
+}
+.popover-bottom-wrap .popover{
+    top:0;
+}
+.popover-bottom-wrap .popover::before{
+    /* 最上侧 */
+    top: 0;
+}
+.popover-top-wrap .popover::before,.popover-bottom-wrap .popover::before{
+    /* 左右剧中 */
+    left:0;
+    right: 0;
+}
+/* 弹出提示层中的内容容器,使用这个嵌套的原因是为了覆盖生成小三角的元素的多余部分 */
+.popover-content{
+    height: inherit;
+    width: inherit;
+    position: relative;
+    z-index: 1;
+    background: inherit;
+}
